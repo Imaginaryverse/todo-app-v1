@@ -85,7 +85,6 @@ const renderTodos = (todos) => {
     const downBtn = li.querySelector('.down-btn');
     const completeBtn = li.querySelector('.complete-btn');
     const deleteBtn = li.querySelector('.delete-btn');
-    /* saveBtn.style.display = 'none'; */
     saveBtn.classList.add('save-disabled');
 
     todoItemForm.addEventListener('submit', (e) => {
@@ -96,12 +95,6 @@ const renderTodos = (todos) => {
       const editedValue = e.target.value !== todo.text;
 
       if (editedValue) {
-        /* saveBtn.style.display = 'block';
-        saveBtn.style.border = 'none';
-        saveBtn.style.backgroundColor = 'transparent';
-        saveBtn.style.margin = '0 0.5rem';
-        saveBtn.style.cursor = 'pointer'; */
-
         saveBtn.classList.remove('save-disabled');
         completeBtn.classList.add('save-enabled');
         deleteBtn.classList.add('save-enabled');
