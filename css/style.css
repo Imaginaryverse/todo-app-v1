@@ -1,9 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&display=swap");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Open Sans' sans-serif;
   font-size: 18px;
   color: #1e1e24;
 }
@@ -15,9 +16,9 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   width: 100vw;
   height: 100vh;
 }
@@ -38,6 +39,13 @@ body {
           align-items: center;
 }
 
+.main-wrapper h1 {
+  font-family: 'Lobster';
+  font-size: 3rem;
+  color: #1e1e24;
+  margin: 1rem;
+}
+
 .main-wrapper .todo-form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -51,7 +59,7 @@ body {
   width: 60vw;
   min-width: 320px;
   max-width: 500px;
-  padding: 1.5rem;
+  padding: 1.5rem 0.5rem 1.5rem 1.5rem;
   border-radius: 5px;
   background-color: #fdf2c4;
   -webkit-box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
@@ -64,6 +72,7 @@ body {
   border-radius: 5px;
   width: 100%;
   height: 2rem;
+  margin-right: 0.5rem;
   padding-left: 0.5rem;
   -webkit-box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.15);
           box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.15);
@@ -73,22 +82,49 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.25);
 }
 
-.main-wrapper .todo-form .submit-btn {
-  margin-left: 1rem;
-  outline: none;
+.main-wrapper .todo-form .btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 4.5rem;
+}
+
+.main-wrapper .todo-form .btn-container .submit-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border: none;
   border-radius: 5px;
-  background-color: transparent;
+  outline: none;
+  background-color: #39b3e6;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
 }
 
-.main-wrapper .todo-form .submit-btn .fas {
-  font-size: 2rem;
-  color: #39b3e6;
+.main-wrapper .todo-form .btn-container .submit-btn .fas {
+  font-size: 1.25rem;
+  color: white;
 }
 
-.main-wrapper .todo-form .submit-btn:hover .fas {
-  color: #1993c8;
+.main-wrapper .todo-form .btn-container .submit-btn:hover {
+  background-color: #1993c8;
 }
 
 .main-wrapper .todos-wrapper {
@@ -134,7 +170,7 @@ body {
   width: 60vw;
   min-width: 320px;
   max-width: 500px;
-  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  padding: 0.5rem;
   border-radius: 5px;
   background-color: #fdf2c4;
   -webkit-box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
@@ -153,6 +189,7 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: auto;
+  margin: 0 0.25rem;
 }
 
 .main-wrapper .todos-wrapper .todo-list .todo-item .arrow-container .up-btn,
@@ -167,11 +204,12 @@ body {
 .main-wrapper .todos-wrapper .todo-list .todo-item .arrow-container .down-btn:enabled:hover .fas {
   -webkit-transform: scale(1.25);
           transform: scale(1.25);
+  color: #39b3e6;
 }
 
 .main-wrapper .todos-wrapper .todo-list .todo-item .arrow-container .up-btn:disabled,
 .main-wrapper .todos-wrapper .todo-list .todo-item .arrow-container .down-btn:disabled {
-  opacity: 0.25;
+  opacity: 0.1;
   cursor: initial;
 }
 
@@ -224,53 +262,93 @@ body {
 
 .main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .complete-btn,
 .main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .delete-btn {
-  outline: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border: none;
-  border-radius: 5px;
-  background-color: transparent;
+  border-radius: 50%;
+  outline: none;
+  width: 1.5rem;
+  height: 1.5rem;
   cursor: pointer;
 }
 
 .main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .complete-btn .fas,
 .main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .delete-btn .fas {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .save-enabled {
   display: none;
 }
 
-.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .complete-btn .fas {
-  color: #74a57f;
+.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .complete-btn {
+  background-color: #74a57f;
 }
 
-.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .complete-btn:hover .fas {
-  color: #598863;
+.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .complete-btn .fas {
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+  color: white;
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .complete-btn:hover {
+  background-color: #598863;
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .delete-btn {
+  background-color: #d64933;
 }
 
 .main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .delete-btn .fas {
-  color: #d64933;
+  color: white;
 }
 
-.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .delete-btn:hover .fas {
-  color: #aa3422;
+.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .delete-btn:hover {
+  background-color: #aa3422;
 }
 
 .main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .save-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
   border: none;
   border-radius: 5px;
-  background-color: transparent;
-  margin: 0 auto;
+  outline: none;
+  background-color: #39b3e6;
+  width: 1.75rem;
+  height: 1.75rem;
   cursor: pointer;
 }
 
 .main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .save-btn .far {
-  font-size: 1.5rem;
-  color: #6347ff;
+  font-size: 1.25rem;
+  color: white;
 }
 
-.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .save-btn:hover .far {
-  color: #2f0aff;
+.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .save-btn:hover {
+  background-color: #1993c8;
 }
 
 .main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .save-disabled {
@@ -283,6 +361,7 @@ body {
   border-radius: 5px;
   outline: none;
   background-color: #d64933;
+  letter-spacing: 1px;
   color: white;
   padding: 0.5rem 1rem;
   -webkit-box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15);

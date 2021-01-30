@@ -77,10 +77,10 @@ const renderTodos = (todos) => {
     </div>
     <div class="btn-container">
     <button class="complete-btn">
-    <i class="fas fa-check-circle"></i>
+    <i class="fas fa-check"></i>
     </button>
     <button class="delete-btn">
-    <i class="fas fa-times-circle"></i>
+    <i class="fas fa-times"></i>
     </button>
     <button class="save-btn">
     <i class="far fa-save"></i></button>
@@ -141,8 +141,6 @@ const moveData = (array, from, to) => {
 
 /* handleEdit */
 const handleEdit = (input, todo, todos) => {
-  console.log(input.value);
-
   const newTodo = {
     ...todo,
     text: input.value,

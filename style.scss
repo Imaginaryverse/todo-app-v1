@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&display=swap');
+
 // VARIABLES
 $clr-red: #d64933;
 $clr-red-hover: #aa3422;
@@ -5,8 +7,6 @@ $clr-green: #74a57f;
 $clr-green-hover: #598863;
 $clr-blue: #39b3e6;
 $clr-blue-hover: #1993c8;
-$clr-purple: #6347ff;
-$clr-purple-hover: #2f0aff;
 
 $clr-main: #fdf2c4;
 $clr-text: #1e1e24;
@@ -17,7 +17,7 @@ $clr-text-complete: rgba(30, 30, 36, 0.25);
   margin: 0;
   padding: 0;
 
-  font-family: sans-serif;
+  font-family: 'Open Sans' sans-serif;
   font-size: 18px;
   color: $clr-text;
 }
@@ -25,7 +25,7 @@ $clr-text-complete: rgba(30, 30, 36, 0.25);
 body {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   width: 100vw;
   height: 100vh;
@@ -37,6 +37,14 @@ body {
   justify-content: center;
   align-items: center;
 
+  h1 {
+    font-family: 'Lobster';
+    font-size: 3rem;
+    color: $clr-text;
+
+    margin: 1rem;
+  }
+
   .todo-form {
     display: flex;
     justify-content: space-between;
@@ -46,7 +54,7 @@ body {
     min-width: 320px;
     max-width: 500px;
 
-    padding: 1.5rem;
+    padding: 1.5rem 0.5rem 1.5rem 1.5rem;
     border-radius: 5px;
     background-color: $clr-main;
     box-shadow: 3px 3px 0px rgba($color: #000000, $alpha: 0.15);
@@ -58,6 +66,7 @@ body {
 
       width: 100%;
       height: 2rem;
+      margin-right: 0.5rem;
       padding-left: 0.5rem;
 
       box-shadow: inset 3px 3px 0 rgba($color: #000000, $alpha: 0.15);
@@ -67,24 +76,36 @@ body {
       }
     }
 
-    .submit-btn {
-      margin-left: 1rem;
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      outline: none;
-      border: none;
-      border-radius: 5px;
-      background-color: transparent;
+      width: 4.5rem;
 
-      cursor: pointer;
+      .submit-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-      .fas {
-        font-size: 2rem;
-        color: $clr-blue;
-      }
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        background-color: $clr-blue;
 
-      &:hover {
+        width: 2rem;
+        height: 2rem;
+
+        cursor: pointer;
+
         .fas {
-          color: $clr-blue-hover;
+          font-size: 1.25rem;
+          color: white;
+        }
+
+        &:hover {
+          background-color: $clr-blue-hover;
         }
       }
     }
@@ -120,7 +141,7 @@ body {
         width: 60vw;
         min-width: 320px;
         max-width: 500px;
-        padding: 0.5rem 0.5rem 0.5rem 1rem;
+        padding: 0.5rem;
 
         border-radius: 5px;
         background-color: $clr-main;
@@ -131,6 +152,8 @@ body {
           flex-direction: column;
           justify-content: space-between;
           height: auto;
+
+          margin: 0 0.25rem;
 
           .up-btn,
           .down-btn {
@@ -144,12 +167,13 @@ body {
               &:hover {
                 .fas {
                   transform: scale(1.25);
+                  color: $clr-blue;
                 }
               }
             }
 
             &:disabled {
-              opacity: 0.25;
+              opacity: 0.1;
               cursor: initial;
             }
           }
@@ -200,15 +224,22 @@ body {
 
           .complete-btn,
           .delete-btn {
-            outline: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
             border: none;
-            border-radius: 5px;
-            background-color: transparent;
+            border-radius: 50%;
+            outline: none;
+
+            width: 1.5rem;
+            height: 1.5rem;
 
             cursor: pointer;
 
             .fas {
-              font-size: 1.5rem;
+              font-size: 1rem;
             }
           }
           .save-enabled {
@@ -216,47 +247,53 @@ body {
           }
 
           .complete-btn {
+            background-color: $clr-green;
             .fas {
-              color: $clr-green;
+              transform: translateY(1px);
+              color: white;
             }
 
             &:hover {
-              .fas {
-                color: $clr-green-hover;
-              }
+              background-color: $clr-green-hover;
             }
           }
 
           .delete-btn {
+            background-color: $clr-red;
             .fas {
-              color: $clr-red;
+              color: white;
             }
 
             &:hover {
-              .fas {
-                color: $clr-red-hover;
-              }
+              background-color: $clr-red-hover;
             }
           }
 
           .save-btn {
-            border: none;
-            border-radius: 5px;
-            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
             margin: 0 auto;
+
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            background-color: $clr-blue;
+
+            width: 1.75rem;
+            height: 1.75rem;
 
             cursor: pointer;
 
             .far {
-              font-size: 1.5rem;
-              color: $clr-purple;
+              font-size: 1.25rem;
+              color: white;
             }
 
             &:hover {
-              .far {
-                color: $clr-purple-hover;
-              }
+              background-color: $clr-blue-hover;
             }
           }
           .save-disabled {
@@ -274,6 +311,8 @@ body {
     border-radius: 5px;
     outline: none;
     background-color: $clr-red;
+
+    letter-spacing: 1px;
     color: white;
 
     padding: 0.5rem 1rem;
