@@ -2,6 +2,7 @@
 const todoForm = document.querySelector('.todo-form');
 const todoInput = document.querySelector('.todo-input');
 const todoList = document.querySelector('.todo-list');
+const clearBtn = document.querySelector('.clear-btn');
 
 // ARRAY
 let todos = [];
@@ -12,6 +13,12 @@ todoForm.addEventListener('submit', (e) => {
 
   const todoText = todoInput.value;
   addTodo(todoText);
+});
+
+clearBtn.addEventListener('click', () => {
+  const emptyArray = [];
+
+  updateTodos(emptyArray);
 });
 
 // FUNCTIONS

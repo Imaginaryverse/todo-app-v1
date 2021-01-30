@@ -32,6 +32,11 @@ body {
 }
 
 .main-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   .todo-form {
     display: flex;
     justify-content: space-between;
@@ -260,5 +265,27 @@ body {
         }
       }
     }
+  }
+
+  .clear-btn {
+    margin-top: 1rem;
+
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: $clr-red;
+    color: white;
+
+    padding: 0.5rem 1rem;
+
+    box-shadow: 3px 3px 0 rgba($color: #000000, $alpha: 0.15);
+
+    &:hover {
+      background-color: $clr-red-hover;
+    }
+  }
+
+  .empty {
+    display: none;
   }
 }

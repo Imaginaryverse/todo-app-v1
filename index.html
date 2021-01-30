@@ -17,7 +17,7 @@
   </head>
   <body>
     <main class="main-wrapper">
-      <form action="submit" class="todo-form">
+      <form action="submit" class="todo-form" autocomplete="off">
         <input
           type="text"
           class="todo-input"
@@ -32,6 +32,8 @@
       <div class="todos-wrapper">
         <ul class="todo-list"></ul>
       </div>
+
+      <button class="clear-btn">CLEAR</button>
     </main>
 
     <script src="app.js"></script>
