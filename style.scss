@@ -5,6 +5,8 @@ $clr-green: #74a57f;
 $clr-green-hover: #598863;
 $clr-blue: #39b3e6;
 $clr-blue-hover: #1993c8;
+$clr-purple: #6347ff;
+$clr-purple-hover: #2f0aff;
 
 $clr-main: #fdf2c4;
 $clr-text: #1e1e24;
@@ -36,7 +38,7 @@ body {
     align-items: center;
 
     width: 60vw;
-    min-width: 300px;
+    min-width: 320px;
     max-width: 500px;
 
     padding: 1.5rem;
@@ -103,26 +105,93 @@ body {
 
       .todo-item {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
+
+        position: relative;
 
         margin-bottom: 0.5rem;
 
         width: 60vw;
-        min-width: 300px;
+        min-width: 320px;
         max-width: 500px;
-        padding: 1rem 1.5rem;
+        padding: 0.5rem 0.5rem 0.5rem 1rem;
 
         border-radius: 5px;
         background-color: $clr-main;
         box-shadow: 3px 3px 0px rgba($color: #000000, $alpha: 0.15);
+
+        .arrow-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: auto;
+
+          .up-btn,
+          .down-btn {
+            border: none;
+            outline: none;
+            background-color: transparent;
+
+            cursor: pointer;
+
+            &:enabled {
+              &:hover {
+                .fas {
+                  transform: scale(1.25);
+                }
+              }
+            }
+
+            &:disabled {
+              opacity: 0.25;
+              cursor: initial;
+            }
+          }
+
+          .fas {
+            font-size: 0.8rem;
+          }
+        }
+
+        .todo-item-form-wrapper {
+          display: flex;
+
+          width: 100%;
+
+          .todo-item-form {
+            width: 100%;
+
+            /* padding-right: 0.5rem; */
+
+            margin: 0 0.5rem;
+
+            .todo-item-input {
+              border: none;
+              background-color: transparent;
+              outline: none;
+
+              width: 100%;
+
+              &:focus {
+                background-color: white;
+                height: 2rem;
+                padding-left: 0.5rem;
+
+                border: 1px solid rgba($color: #000000, $alpha: 0.25);
+                border-radius: 5px;
+                box-shadow: inset 3px 3px 0 rgba($color: #000000, $alpha: 0.15);
+              }
+            }
+          }
+        }
 
         .btn-container {
           display: flex;
           justify-content: space-between;
           align-items: center;
 
-          width: 4rem;
+          width: 4.5rem;
 
           .complete-btn,
           .delete-btn {
@@ -136,6 +205,9 @@ body {
             .fas {
               font-size: 1.5rem;
             }
+          }
+          .save-enabled {
+            display: none;
           }
 
           .complete-btn {
@@ -160,6 +232,30 @@ body {
                 color: $clr-red-hover;
               }
             }
+          }
+
+          .save-btn {
+            border: none;
+            border-radius: 5px;
+            background-color: transparent;
+
+            margin: 0 auto;
+
+            cursor: pointer;
+
+            .far {
+              font-size: 1.5rem;
+              color: $clr-purple;
+            }
+
+            &:hover {
+              .far {
+                color: $clr-purple-hover;
+              }
+            }
+          }
+          .save-disabled {
+            display: none;
           }
         }
       }

@@ -33,7 +33,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 60vw;
-  min-width: 300px;
+  min-width: 320px;
   max-width: 500px;
   padding: 1.5rem;
   border-radius: 5px;
@@ -107,21 +107,90 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
   margin-bottom: 0.5rem;
   width: 60vw;
-  min-width: 300px;
+  min-width: 320px;
   max-width: 500px;
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
   border-radius: 5px;
   background-color: #fdf2c4;
   -webkit-box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
           box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .arrow-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: auto;
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .arrow-container .up-btn,
+.main-wrapper .todos-wrapper .todo-list .todo-item .arrow-container .down-btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .arrow-container .up-btn:enabled:hover .fas,
+.main-wrapper .todos-wrapper .todo-list .todo-item .arrow-container .down-btn:enabled:hover .fas {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .arrow-container .up-btn:disabled,
+.main-wrapper .todos-wrapper .todo-list .todo-item .arrow-container .down-btn:disabled {
+  opacity: 0.25;
+  cursor: initial;
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .arrow-container .fas {
+  font-size: 0.8rem;
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .todo-item-form-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .todo-item-form-wrapper .todo-item-form {
+  width: 100%;
+  /* padding-right: 0.5rem; */
+  margin: 0 0.5rem;
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .todo-item-form-wrapper .todo-item-form .todo-item-input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .todo-item-form-wrapper .todo-item-form .todo-item-input:focus {
+  background-color: white;
+  height: 2rem;
+  padding-left: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  -webkit-box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.15);
 }
 
 .main-wrapper .todos-wrapper .todo-list .todo-item .btn-container {
@@ -134,7 +203,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 4rem;
+  width: 4.5rem;
 }
 
 .main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .complete-btn,
@@ -151,6 +220,10 @@ body {
   font-size: 1.5rem;
 }
 
+.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .save-enabled {
+  display: none;
+}
+
 .main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .complete-btn .fas {
   color: #74a57f;
 }
@@ -165,5 +238,26 @@ body {
 
 .main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .delete-btn:hover .fas {
   color: #aa3422;
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .save-btn {
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .save-btn .far {
+  font-size: 1.5rem;
+  color: #6347ff;
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .save-btn:hover .far {
+  color: #2f0aff;
+}
+
+.main-wrapper .todos-wrapper .todo-list .todo-item .btn-container .save-disabled {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

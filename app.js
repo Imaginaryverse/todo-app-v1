@@ -23,12 +23,13 @@ const addTodo = (todoText) => {
       text: todoText,
       complete: false,
     };
+
+    // Append new todo to array
+    todos.push(todo);
+    // Update todos
+    updateTodos(todos);
   }
 
-  // Append new todo to array
-  todos.push(todo);
-  // Update todos
-  updateTodos(todos);
   // Clear input box
   todoInput.value = '';
 };
@@ -39,22 +40,33 @@ const renderTodos = (todos) => {
   todoList.innerHTML = '';
 
   // Iterate through array of todos
-  todos.forEach(function (todo) {
-    // Check if complete
-    const completed = todo.complete ? 'todo-complete' : '';
-
+  todos.forEach((todo, index) => {
     // Create list item
     const li = document.createElement('li');
     li.setAttribute('class', 'todo-item');
     li.setAttribute('data-key', todo.id);
 
-    // Add class 'todo-complete' if complete
-    if (todo.complete === true) {
-      li.classList.add('todo-complete');
-    }
+    const upIsDisabled = index === 0;
+    const downIsDisabled = index === todos.length - 1;
+    const isComplete = todo.complete;
 
     // Specify HTML of <li>
-    li.innerHTML = `${todo.text}
+    li.innerHTML = `
+    <div class="arrow-container">
+    <button class="up-btn" ${upIsDisabled ? 'disabled' : ''}>
+    <i class="fas fa-arrow-up"></i>
+    </button>
+    <button class="down-btn" ${downIsDisabled ? 'disabled' : ''}>
+    <i class="fas fa-arrow-down"></i>
+    </button>
+    </div>
+    <div class="todo-item-form-wrapper">
+    <form class="todo-item-form" action="submit">
+    <input type="text" class="todo-item-input ${
+      isComplete ? 'todo-complete' : ''
+    }" id="TA-${todo.id}" value=${todo.text}></input>
+    </form>
+    </div>
     <div class="btn-container">
     <button class="complete-btn">
     <i class="fas fa-check-circle"></i>
@@ -62,16 +74,55 @@ const renderTodos = (todos) => {
     <button class="delete-btn">
     <i class="fas fa-times-circle"></i>
     </button>
+    <button class="save-btn">
+    <i class="far fa-save"></i></button>
     </div>`;
 
-    // COMPLETE BTN
+    const todoItemForm = li.querySelector('.todo-item-form');
+    const todoItemInput = li.querySelector('.todo-item-input');
+    const saveBtn = li.querySelector('.save-btn');
+    const upBtn = li.querySelector('.up-btn');
+    const downBtn = li.querySelector('.down-btn');
     const completeBtn = li.querySelector('.complete-btn');
-    completeBtn.addEventListener('click', () =>
-      handleComplete(li, todo, todos)
+    const deleteBtn = li.querySelector('.delete-btn');
+    /* saveBtn.style.display = 'none'; */
+    saveBtn.classList.add('save-disabled');
+
+    todoItemForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleEdit(todoItemInput, todo, todos);
+    });
+    todoItemInput.addEventListener('input', (e) => {
+      const editedValue = e.target.value !== todo.text;
+
+      if (editedValue) {
+        /* saveBtn.style.display = 'block';
+        saveBtn.style.border = 'none';
+        saveBtn.style.backgroundColor = 'transparent';
+        saveBtn.style.margin = '0 0.5rem';
+        saveBtn.style.cursor = 'pointer'; */
+
+        saveBtn.classList.remove('save-disabled');
+        completeBtn.classList.add('save-enabled');
+        deleteBtn.classList.add('save-enabled');
+      }
+    });
+
+    // SAVE BTN
+    saveBtn.addEventListener('click', () =>
+      handleEdit(todoItemInput, todo, todos)
     );
 
+    // UP BTN
+    upBtn.addEventListener('click', () => moveData(todos, index, index - 1));
+
+    // DOWN BTN
+    downBtn.addEventListener('click', () => moveData(todos, index, index + 1));
+
+    // COMPLETE BTN
+    completeBtn.addEventListener('click', () => handleComplete(todo, todos));
+
     // DELETE BTN
-    const deleteBtn = li.querySelector('.delete-btn');
     deleteBtn.addEventListener('click', () => handleDelete(todo, todos));
 
     // Append <li> to <ul>
@@ -79,16 +130,49 @@ const renderTodos = (todos) => {
   });
 };
 
+/* moveData */
+const moveData = (array, from, to) => {
+  const newArray = [...array];
+  const item = newArray.splice(from, 1)[0];
+  newArray.splice(to, 0, item);
+  updateTodos(newArray);
+};
+
+/* handleEdit */
+const handleEdit = (input, todo, todos) => {
+  console.log(input.value);
+
+  const newTodo = {
+    ...todo,
+    text: input.value,
+  };
+
+  const newTodos = todos.map((e) => {
+    if (todo.id === e.id) {
+      return newTodo;
+    } else {
+      return e;
+    }
+  });
+
+  updateTodos(newTodos);
+};
+
 /* handleComplete */
-const handleComplete = (li, todo, todos) => {
-  if (todo.complete === false) {
-    li.classList.add('todo-complete');
-    todo.complete = true;
-  } else {
-    li.classList.remove('todo-complete');
-    todo.complete = false;
-  }
-  updateTodos(todos);
+const handleComplete = (todo, todos) => {
+  const newTodo = {
+    ...todo,
+    complete: !todo.complete,
+  };
+
+  const newTodos = todos.map((e) => {
+    if (todo.id == e.id) {
+      return newTodo;
+    } else {
+      return e;
+    }
+  });
+  updateTodos(newTodos);
 };
 
 /* handleDelete */
@@ -118,11 +202,3 @@ const getFromLocalStorage = () => {
 
 // Get from local storage
 getFromLocalStorage();
-
-// NEXT
-/*
-  1. Style <li>
-  2. Style 'checked'
-  3. Add DELETE function
-  4. Add SaveToLocalStorage function
-*/
