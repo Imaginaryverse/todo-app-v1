@@ -19,6 +19,7 @@ clearBtn.addEventListener('click', () => {
   const emptyArray = [];
 
   updateTodos(emptyArray);
+  getFromLocalStorage();
 });
 
 // FUNCTIONS
@@ -176,10 +177,12 @@ const handleComplete = (todo, todos) => {
 };
 
 /* handleDelete */
-const handleDelete = (todo, todos) =>
+const handleDelete = (todo, todos) => {
   updateTodos(todos.filter((e) => todo.id !== e.id));
+  getFromLocalStorage();
+};
 
-/* ADD TO LOCAL STORAGE */
+/* SAVE TO LOCAL STORAGE */
 const saveToLocalStorage = (todos) =>
   localStorage.setItem('todos', JSON.stringify(todos));
 
