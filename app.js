@@ -64,7 +64,7 @@ const renderTodos = (todos) => {
     <form class="todo-item-form" action="submit">
     <input type="text" class="todo-item-input ${
       isComplete ? 'todo-complete' : ''
-    }" id="TA-${todo.id}" value=${todo.text}></input>
+    }" id="TA-${todo.id}" value="${todo.text}"></input>
     </form>
     </div>
     <div class="btn-container">

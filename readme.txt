@@ -1,4 +1,5 @@
 TODO APP
 
-ADDITIONAL OPTIONALS
-1. Function to move task up or down in list
+ISSUES
+1. Adding items only saves first word
+2. Todo item text does not update properly upon edit
