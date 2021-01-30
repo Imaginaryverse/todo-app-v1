@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+      integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+      crossorigin="anonymous"
+    />
+
+    <title>TODO v1</title>
+  </head>
+  <body>
+    <main class="main-wrapper">
+      <form action="submit" class="todo-form">
+        <input
+          type="text"
+          class="todo-input"
+          id="input-text"
+          placeholder="Add item"
+        />
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-plus-square"></i>
+        </button>
+      </form>
+
+      <div class="todos-wrapper">
+        <ul class="todo-list"></ul>
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
