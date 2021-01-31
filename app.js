@@ -163,6 +163,7 @@ const handleEdit = (input, todo, todos) => {
   });
 
   updateTodos(newTodos);
+  getFromLocalStorage();
 };
 
 /* handleComplete */
