@@ -181,6 +181,7 @@ const handleComplete = (todo, todos) => {
     }
   });
   updateTodos(newTodos);
+  getFromLocalStorage();
 };
 
 /* handleDelete */
