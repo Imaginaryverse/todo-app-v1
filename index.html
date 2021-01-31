@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/altstyle.css" />
 
     <link
       rel="stylesheet"
@@ -17,26 +17,30 @@
   </head>
   <body>
     <main class="main-wrapper">
-      <h1>What's the plan?</h1>
-      <form action="submit" class="todo-form" autocomplete="off">
-        <input
-          type="text"
-          class="todo-input"
-          id="input-text"
-          placeholder="Add item"
-        />
-        <div class="btn-container">
-          <button type="submit" class="submit-btn">
-            <i class="fas fa-plus"></i>
-          </button>
-        </div>
-      </form>
+      <header class="header">
+        <h1>Todotody</h1>
+        <form action="submit" class="todo-form" autocomplete="off">
+          <input
+            type="text"
+            class="todo-input"
+            id="input-text"
+            placeholder="Add item"
+          />
+          <div class="btn-container">
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </form>
+      </header>
 
       <div class="todos-wrapper">
         <ul class="todo-list"></ul>
       </div>
 
-      <button class="clear-btn">CLEAR</button>
+      <footer class="footer">
+        <button class="clear-btn">CLEAR</button>
+      </footer>
     </main>
 
     <script src="app.js"></script>

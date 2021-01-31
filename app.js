@@ -3,6 +3,7 @@ const todoForm = document.querySelector('.todo-form');
 const todoInput = document.querySelector('.todo-input');
 const todoList = document.querySelector('.todo-list');
 const clearBtn = document.querySelector('.clear-btn');
+const footer = document.querySelector('.footer');
 
 // ARRAY
 let todos = [];
@@ -23,6 +24,11 @@ clearBtn.addEventListener('click', () => {
 });
 
 // FUNCTIONS
+const checkListLength = (todos) =>
+  todos.length < 1
+    ? footer.classList.add('empty')
+    : footer.classList.remove('empty');
+
 const addTodo = (todoText) => {
   if (todoText !== '') {
     // Create todo
@@ -37,6 +43,8 @@ const addTodo = (todoText) => {
     // Update todos
     updateTodos(todos);
   }
+
+  checkListLength(todos);
 
   // Clear input box
   todoInput.value = '';
@@ -199,6 +207,8 @@ const getFromLocalStorage = () => {
     todos = JSON.parse(reference);
     renderTodos(todos);
   }
+
+  checkListLength(todos);
 };
 
 // Get from local storage
